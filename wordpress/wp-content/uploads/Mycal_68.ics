@@ -1,0 +1,11 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+BEGIN:VEVENT
+UID:f848b409ff7a0ee6ba9d70d7d0f85661
+SUMMARY:All in one Evens - 20 Apr 2020 05:00
+DTSTART;TZID=+00:00:20200420T050000
+DTEND;TZID=+00:00:20200420T090000
+DESCRIPTION:Salon name: All in one Evens \n\nSalon address: Main Street 123 \n\nSalon phone: 00391122334455 \n\nSalon email: pratik97@gmail.com \n\nBooked services:\nDarshan Rawal: 05:00 ➝ 09:00\n\nBooking notes:\nNone\n\nBooking status: Pay later
+LOCATION:Main Street 123
+END:VEVENT
+END:VCALENDAR

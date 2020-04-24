@@ -1,0 +1,42 @@
+2020-04-21T05:03:16+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\class-astra-dynamic-css.php on line 13
+
+2020-04-21T05:04:49+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-includes\Requests\Utility\CaseInsensitiveDictionary.php on line 15
+
+2020-04-21T05:05:29+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-includes\Requests\Transport\cURL.php on line 441
+
+2020-04-21T05:24:07+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\core\class-astra-admin-helper.php on line 14
+
+2020-04-21T05:25:55+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\vendor\autoload_packages.php on line 109
+
+2020-04-21T06:29:32+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-admin\src\API\Reports\Customers\DataStore.php on line 10
+
+2020-04-21T06:29:39+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\addons\transparent-header\classes\class-astra-ext-transparent-header-markup.php on line 8
+
+2020-04-21T06:41:45+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\elementor\includes\template-library\sources\base.php on line 8
+
+2020-04-21T06:43:53+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-includes\Requests\Transport\cURL.php on line 163
+
+2020-04-21T06:43:53+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\salon-booking-system\salon.php on line 94
+
+2020-04-21T06:46:45+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-rest-api\src\Controllers\Version3\class-wc-rest-product-attribute-terms-controller.php on line 19
+
+2020-04-21T10:58:59+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\compatibility\lifterlms\class-astra-lifterlms.php on line 10
+
+2020-04-21T10:59:08+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\action-scheduler\classes\schema\ActionScheduler_LoggerSchema.php on line 10
+
+2020-04-21T11:01:47+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\includes\admin\class-wc-admin-settings.php on line 11
+
+2020-04-21T11:02:20+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-admin\includes\class-wp-internal-pointers.php on line 15
+
+2020-04-21T11:04:01+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-rest-api\src\Controllers\Version3\class-wc-rest-shipping-zone-locations-controller.php on line 19
+
+2020-04-21T12:16:39+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\compatibility\woocommerce\woocommerce-common-functions.php on line 14
+
+2020-04-21T13:48:32+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-includes\widgets\class-wp-widget-media-image.php on line 18
+
+2020-04-21T13:49:38+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\themes\astra\inc\addons\heading-colors\class-astra-heading-colors.php on line 12
+
+2020-04-21T13:49:58+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-blocks\src\Assets.php on line 156
+
+2020-04-21T14:13:40+00:00 CRITICAL syntax error, unexpected '=' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 285
+

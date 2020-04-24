@@ -1,0 +1,74 @@
+2020-04-23T06:04:19+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 283
+
+2020-04-23T06:30:48+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 283
+
+2020-04-23T06:31:28+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 283
+
+2020-04-23T06:31:45+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 283
+
+2020-04-23T06:32:37+00:00 CRITICAL syntax error, unexpected end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 283
+
+2020-04-23T06:46:45+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\elementor\includes\managers\image.php on line 6
+
+2020-04-23T06:47:27+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-admin\src\API\Reports\Downloads\Controller.php on line 12
+
+2020-04-23T06:47:38+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-includes\wp-db.php on line 2024
+
+2020-04-23T06:56:15+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 265
+
+2020-04-23T06:56:51+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 265
+
+2020-04-23T07:00:15+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 265
+
+2020-04-23T07:17:51+00:00 CRITICAL syntax error, unexpected '"success"' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 269
+
+2020-04-23T07:18:14+00:00 CRITICAL syntax error, unexpected '"success"' (T_CONSTANT_ENCAPSED_STRING) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 269
+
+2020-04-23T07:53:08+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-rest-api\src\Controllers\Version1\class-wc-rest-taxes-v1-controller.php on line 13
+
+2020-04-23T09:20:48+00:00 CRITICAL syntax error, unexpected 'echo' (T_ECHO) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T09:21:01+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 268
+
+2020-04-23T09:21:04+00:00 CRITICAL syntax error, unexpected '}', expecting end of file in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 268
+
+2020-04-23T09:21:54+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\includes\emails\class-wc-email-customer-on-hold-order.php on line 8
+
+2020-04-23T09:23:04+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-rest-api\src\Controllers\Version1\class-wc-rest-product-attributes-v1-controller.php on line 13
+
+2020-04-23T09:24:26+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\includes\admin\settings\class-wc-settings-page.php on line 11
+
+2020-04-23T09:51:31+00:00 CRITICAL syntax error, unexpected ')' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 246
+
+2020-04-23T10:25:46+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\vendor\autoload_packages.php on line 109
+
+2020-04-23T10:26:08+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-admin\src\API\Options.php on line 12
+
+2020-04-23T14:04:05+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-admin\src\Features\Onboarding.php on line 17
+
+2020-04-23T14:06:03+00:00 CRITICAL Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\wordpress\wp-content\plugins\woocommerce\packages\woocommerce-rest-api\src\Controllers\Version2\class-wc-rest-reports-v2-controller.php on line 19
+
+2020-04-23T14:12:00+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T14:12:48+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T14:13:45+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T14:14:39+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T14:24:13+00:00 CRITICAL syntax error, unexpected '||' (T_BOOLEAN_OR) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 249
+
+2020-04-23T14:25:10+00:00 CRITICAL syntax error, unexpected 'INSERT' (T_STRING), expecting ',' or ';' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 254
+
+2020-04-23T14:30:21+00:00 CRITICAL syntax error, unexpected '||' (T_BOOLEAN_OR) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 255
+
+2020-04-23T14:30:26+00:00 CRITICAL syntax error, unexpected '||' (T_BOOLEAN_OR) in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 255
+
+2020-04-23T14:31:09+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 256
+
+2020-04-23T14:31:11+00:00 CRITICAL syntax error, unexpected '}' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 256
+
+2020-04-23T14:32:42+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 258
+
+2020-04-23T14:59:23+00:00 CRITICAL syntax error, unexpected '}', expecting ',' or ';' in C:\xampp\htdocs\wordpress\wp-content\themes\astra\functions.php on line 259
+

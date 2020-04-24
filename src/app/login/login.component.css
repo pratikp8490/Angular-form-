@@ -1,0 +1,12 @@
+input{
+    width: 300px;
+}
+.frm{
+    background-color:#66B4E5;
+}
+input{
+    background-color: #f6f6f6;
+}
+.btnn{  
+    margin-left: 80px;
+}

@@ -1,0 +1,29 @@
+.navbar{
+    background-color: #000000;
+    opacity: .5;
+}
+.frm{
+   background-color: #66B4E5;
+   margin-left: 50%; 
+}
+.btnn{
+    /* text-align: center; */
+    margin-left: 120px;
+}
+.banner{
+    background: url(banner.jpg);
+}
+.banner h1{
+    padding: 235px 0;
+    color: #FD5E29;
+    font-size: 60px;
+}
+.bgcolor{
+    opacity: .5;
+}
+.first_part , .third_part{
+        background-color: #f6f6f6;
+}
+.btna{
+    margin-left: 70px;
+}

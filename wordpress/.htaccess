@@ -1,0 +1,92 @@
+
+# BEGIN WordPress
+# The directives (lines) between `BEGIN WordPress` and `END WordPress` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /wordpress/
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /wordpress/index.php [L]
+</IfModule>
+
+# END WordPress
+# BEGIN HttpHeaders
+# The directives (lines) between `BEGIN HttpHeaders` and `END HttpHeaders` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  <IfModule mod_setenvif.c>
+    SetEnvIf Origin "^(\*)$" CORS=$0
+  </IfModule>
+  Header set Access-Control-Allow-Origin %{CORS}e env=CORS
+  Header set Access-Control-Allow-Credentials "true" env=CORS
+  Header set Access-Control-Expose-Headers "*" env=CORS
+  <FilesMatch "\.(php|html)$">
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "0"
+    Header set X-Download-Options "noopen"
+    Header set X-Permitted-Cross-Domain-Policies "none"
+    Header set X-DNS-Prefetch-Control "on"
+  </FilesMatch>
+</IfModule>
+
+
+<ifmodule mod_headers.c="">
+   SetEnvIf Origin "^(..domain.com)$" ORIGIN_SUB_DOMAIN=$1
+   Header set Access-Control-Allow-Origin "%{ORIGIN_SUB_DOMAIN}e" env=ORIGIN_SUB_DOMAIN
+   Header set Access-Control-Allow-Methods: ""
+   Header set Access-Control-Allow-Headers: "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+</ifmodule>
+<IfModule mod_headers.c>
+  <FilesMatch ".(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+    # WP Increse Maximum Execution Time
+
+    <IfModule mod_php5.c>
+
+        php_value max_execution_time 300
+
+    </IfModule>
+
+
+
+
+# END HttpHeaders
+# BEGIN HttpHeadersAuth
+# The directives (lines) between `BEGIN HttpHeadersAuth` and `END HttpHeadersAuth` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersAuth
+# BEGIN HttpHeadersCompression
+# The directives (lines) between `BEGIN HttpHeadersCompression` and `END HttpHeadersCompression` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersCompression
+# BEGIN HttpHeadersContentType
+# The directives (lines) between `BEGIN HttpHeadersContentType` and `END HttpHeadersContentType` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersContentType
+# BEGIN HttpHeadersExpires
+# The directives (lines) between `BEGIN HttpHeadersExpires` and `END HttpHeadersExpires` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersExpires
+# BEGIN HttpHeadersCookieSecurity
+# The directives (lines) between `BEGIN HttpHeadersCookieSecurity` and `END HttpHeadersCookieSecurity` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersCookieSecurity
+# BEGIN HttpHeadersTiming
+# The directives (lines) between `BEGIN HttpHeadersTiming` and `END HttpHeadersTiming` are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+# END HttpHeadersTiming
+

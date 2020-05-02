@@ -9,13 +9,16 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { BookingComponent } from './booking/booking.component';
-
+import { ActivateGuard } from './activate.guard';
+import { ApiService } from './api.service';
+import { ShowbookingComponent } from './showbooking/showbooking.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     BookingComponent,
+    ShowbookingComponent,
 
   ],
   imports: [
@@ -29,7 +32,7 @@ import { BookingComponent } from './booking/booking.component';
     FormsModule
 
   ],
-  providers: [],
+  providers: [ActivateGuard,ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

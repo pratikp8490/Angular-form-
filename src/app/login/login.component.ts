@@ -6,11 +6,11 @@ import { ApiService } from '../api.service';
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent{
 loginForm: FormGroup;
-  jsonapifile : any 
+jsonapifile : any 
   constructor(private router: Router, private http:HttpClient ,private service:ApiService) {
     this.loginForm = new FormGroup({
       username: new FormControl('', Validators.required),
@@ -19,12 +19,14 @@ loginForm: FormGroup;
   }
 
   loginUser(value) {
-    this.http.get(`http://localhost/wordpress_training/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
+    this.http.get(`http://localhost/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
         .subscribe(data => {
           this.jsonapifile = data
+          localStorage.setItem('ID', JSON.stringify(this.jsonapifile.ID));
           console.log("loginSuccess", this.jsonapifile)
           this.router.navigate(['home'], { state: value }) 
         },
+        
         error => {
           console.error(" Error ", error)
         })

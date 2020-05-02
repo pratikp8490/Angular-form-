@@ -32,7 +32,7 @@ constructor(private router:Router,private httpClient: HttpClient, private servic
 
   ngOnInit(): void {
     this.eventbooking = this.formBuilder.group({
-      post_title: ['', [Validators.required , Validators.pattern("^[a-z]$")]],
+      post_title: ['', [Validators.required]],
       mo_no: ['',[Validators.required,Validators.pattern("^[0-9]{10}$")]],
       email: ['', Validators.compose([
         Validators.required,Validators.email, 
@@ -55,10 +55,11 @@ constructor(private router:Router,private httpClient: HttpClient, private servic
   eventbook(value) {
     this.jsonapi = `http://localhost/wordpress/wp-json/custom-plugin/tickets`
     const headers = new HttpHeaders().set('Content-Type','application/x-www-form-urlencoded');
-    
+    var log_id = localStorage.getItem('ID');
+    console.log(log_id);
     return this.httpClient.post(
       this.jsonapi,
-      `post_title=${value.post_title}&mo_no=${value.mo_no}&email=${value.email}&eve_date=${value.eve_date}
+      `&log_id=${log_id}&post_title=${value.post_title}&mo_no=${value.mo_no}&email=${value.email}&eve_date=${value.eve_date}
       &eve_time=${value.eve_time}&post_content=${value.post_content}&address=${value.address}
       &action=${'wp_posts'}`,
       {headers , responseType: 'text'})
@@ -71,5 +72,5 @@ constructor(private router:Router,private httpClient: HttpClient, private servic
         console.log("Error", error);   
         }        
     )   
-  } 
+  }
 }

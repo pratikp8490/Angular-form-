@@ -1,0 +1,36 @@
+<!-- <p>showbooking works!</p> -->
+<div class="tbl">
+<button type="submit" class="nav-link mt-5 mb-4 btn-warning text-white border-0" (click)="showbooking()">Show Booked Event</button>
+<div *ngFor="let item of booking">
+{{item}} 
+</div>
+<!-- <div class="container">
+<table class="table">
+    <thead>
+       <tr>
+          <th>UserLog_id</th>
+          <th>Name</th>
+          <th>MobileNO.</th>
+          <th>Email</th>
+          <th>Events</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Address</th>
+       </tr>
+    </thead>
+    <tbody>
+       <tr *ngFor="let item of booking">
+          <td>{{ item.log_id }}</td>
+          <td>{{ item.post_title }}</td>
+          <td>{{ item.mo_no }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.post_content }}</td>
+          <td>{{ item.eve_date }}</td>
+          <td>{{ item.eve_time }}</td>
+          <td>{{ item.address }}</td>
+       </tr>
+    </tbody>
+ </table>
+</div> -->
+</div>
+<router-outlet></router-outlet>

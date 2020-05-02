@@ -5,3 +5,10 @@
  .btnn{
      text-align: center;
  }
+ .navbar{
+    background-color: #000000;
+    opacity: .5;
+}
+h1{
+    color: #66B4E5;
+}

@@ -173,15 +173,15 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 // headers
 
 function add_cors_http_header(){
-  header("Access-Control-Allow-Origin: *");
+	header("Access-Control-Allow-Origin: *");
 }
 add_action('init﻿','add_cors_http_header');
 
 add_filter('allowed_http_origins', 'add_allowed_origins');
 
 function add_allowed_origins($origins) {
-  $origins[] = 'https://www.yourdomain.com';
-  return $origins;
+	$origins[] = 'https://www.yourdomain.com';
+	return $origins;
 }  
 
 
@@ -190,31 +190,31 @@ function add_allowed_origins($origins) {
 add_action( 'rest_api_init', 'register_api_hooks' );
 
 function register_api_hooks() {
-  register_rest_route(
-    'custom-plugin', '/login/',
-    array(
-      'methods'  => 'GET',
-      'callback' => 'login',
-    )
-  );
+	register_rest_route(
+		'custom-plugin', '/login/',
+		array(
+			'methods'  => 'GET',
+			'callback' => 'login',
+		)
+	);
 }
 function login($request){
-  session_start();
+	session_start();
 
-  $creds['user_login'] = $request["username"];
-  $creds['user_password'] =  $request["password"];
-  $_SESSION['login'] = $creds['user_login'];
-  $_SESSION['password'] = $creds['user_password'];
+	$creds['user_login'] = $request["username"];
+	$creds['user_password'] =  $request["password"];
+	$_SESSION['login'] = $creds['user_login'];
+	$_SESSION['password'] = $creds['user_password'];
 
   // echo $_SESSION['login'];
   // echo $_SESSION['password'];
 
-  $creds['remember'] = true;
-  $user = wp_signon( $creds, false );
+	$creds['remember'] = true;
+	$user = wp_signon( $creds, false );
 
-  if ( is_wp_error($user) )
-    echo $user->get_error_message();
-  return $user;
+	if ( is_wp_error($user) )
+		echo $user->get_error_message();
+	return $user;
 }
 
 
@@ -223,63 +223,61 @@ function login($request){
 add_action( 'rest_api_init', 'register_api_hooks_booking' );
 
 function register_api_hooks_booking() {
-  register_rest_route(
-    'custom-plugin', '/tickets/',
-    array(
-      'methods'  => 'POST',
-      'callback' => 'booking',
+	register_rest_route(
+		'custom-plugin', '/tickets/',
+		array(
+			'methods'  => 'POST',
+			'callback' => 'booking',
 
-    )
-  );
+		)
+	);
 }
 
 function booking($request){
 
-  $nm=$_POST['post_title'];
-  $no=$_POST['mo_no'];
-  $co=$_POST['post_content'];
-  $em=$_POST['email'];
-  $dt=$_POST['eve_date'];
-  $tm=$_POST['eve_time'];
-  $ad=$_POST['address'];
+	$nm=$_POST['post_title'];
+	$no=$_POST['mo_no'];
+	$co=$_POST['post_content'];
+	$em=$_POST['email'];
+	$dt=$_POST['eve_date'];
+	$tm=$_POST['eve_time'];
+	$ad=$_POST['address'];
 
-  $log_id = $_POST['log_id'];
-  // echo $log_id;   
+	$log_id = $_POST['log_id'];
 
-  if($nm == "" || $no == "" || $em == "" ||  $dt == "" || $tm == "" || $co == "" || $ad == "")
-  {
-    $required = "BAD Request";
-    http_response_code(400);
-    echo $required;
-    exit;
+
+
+	if($nm == "" || $no == "" || $em == "" ||  $dt == "" || $tm == "" || $co == "" || $ad == "")
+	{
+		$required = "BAD Request";
+		http_response_code(400);
+		echo $required;
+		exit;
   // echo "All Fields Are Reqiuired";
-  }
-  if(!preg_match("/^[a-z]+$/", $nm)){
-    echo "Enter valid Name";
-  }
-  if(!preg_match("/^[0-9]{10}$/", $no)){
-    echo "Enter valid Number";
-  }
-  if(!preg_match("/^[a-zA-Z0-9.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/", $em)){
-    echo "Enter valid Email";
-  }
-  else{
-   $con = mysqli_connect('localhost','root','','events');
+	}
+	if(!preg_match("/^[a-z]+$/", $nm)){
+		echo "Enter valid Name";
+	}
+	if(!preg_match("/^[0-9]{10}$/", $no)){
+		echo "Enter valid Number";
+	}
+	if(!preg_match("/^[a-zA-Z0-9.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/", $em)){
+		echo "Enter valid Email";
+	}
+	else{
+		$con = mysqli_connect('localhost','root','','events');
 
-   $qy= "INSERT INTO wp_posts ( log_id, post_title , mo_no , Email , eve_date , eve_time , post_content , address) 
-   VALUES ('$log_id','$nm' , '$no' , '$em' , '$dt' , '$tm' , '$co' , '$ad' )";
-    
-   if ($con->query($qy) === TRUE) {
-     echo "New record created successfully";
-   } 
-   else {
-    echo "Error: " . $qy . "<br>" . $con->error;
-  }
-}
-    //   echo $user->get_error_message();
-
-    // if ( is_wp_error($user) )
-    // return $user;
+		$qy= "INSERT INTO wp_posts (log_id, post_title , mo_no , Email , eve_date , eve_time , post_content , address) 
+		VALUES ('$log_id','$nm' , '$no' , '$em' , '$dt' , '$tm' , '$co' , '$ad' )";
+		if ($con->query($qy) === TRUE) {
+			$last_id = mysqli_insert_id($con);
+			echo 
+			$last_id ;
+		}
+		else {
+			echo "Error: " . $qy . "<br>" . $con->error;
+		}
+	}
 }
 
 // ****************************************************** logout API ***********************************************
@@ -287,17 +285,17 @@ function booking($request){
 add_action( 'rest_api_init', 'logoutfn');
 
 function logoutfn() {
-  register_rest_route(
-    'custom-plugin', '/logout/',
-    array(
-      'methods'  => 'GET',
-      'callback' => 'logout',
-    )
-  );
+	register_rest_route(
+		'custom-plugin', '/logout/',
+		array(
+			'methods'  => 'GET',
+			'callback' => 'logout',
+		)
+	);
 }
 function logout(){
     // echo "user logout";
-  session_destroy();
+	session_destroy();
 }
 
 // ***************************************display booked event API***************************************************
@@ -305,19 +303,119 @@ function logout(){
 add_action( 'rest_api_init', 'lookevent');
 
 function lookevent() {
-  register_rest_route(
-    'custom-plugin', '/event/',
-    array(
-      'methods'  => 'GET',
-      'callback' => 'events',
-    )
-  );
+	register_rest_route(
+		'custom-plugin', '/event/',
+		array(
+			'methods'  => 'GET',
+			'callback' => 'events',
+		)
+	);
 }
 function events($request){
 
-$log_id = $_GET['log_id'];
+	$log_id = $_GET['log_id'];
     // echo $log_id;
 
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "events";
+
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	$sql = "SELECT id, post_title, mo_no, email, post_content, eve_date, eve_time, address  FROM wp_posts WHERE log_id = $log_id";
+	$result = mysqli_query($conn, $sql);
+
+	$response =  [];
+
+	if (mysqli_num_rows($result) > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+
+			array_push($response, $row);
+		}
+		echo json_encode($response);
+		exit();
+	} else 
+	{
+		echo "This User is not valid to see his bookings"; 
+	} 
+}
+
+// ************************************Edit button click api ************************************************************
+
+// add_action( 'rest_api_init', 'lookdata');
+
+// function lookdata() {
+// 	register_rest_route(
+// 		'custom-plugin', '/display/',
+// 		array(
+// 			'methods'  => 'GET',
+// 			'callback' => 'displaydata',
+// 		)
+// 	);
+// }
+// function displaydata($request){
+
+// 	$id = $_GET['ID'];
+//     // echo $log_id;
+
+// 	$servername = "localhost";
+// 	$username = "root";
+// 	$password = "";
+// 	$dbname = "events";
+
+// 	$conn = new mysqli($servername, $username, $password, $dbname);
+// 	if ($conn->connect_error) {
+// 		die("Connection failed: " . $conn->connect_error);
+// 	}
+// 	$sql = "SELECT ID, post_title, mo_no, email, post_content, eve_date, eve_time, address  FROM wp_posts WHERE ID = $id";
+// 	$result = mysqli_query($conn, $sql);
+// 	$response =  [];
+
+// 	if (mysqli_num_rows($result) > 0) {
+// 		while($row = mysqli_fetch_assoc($result)) {
+
+// 			array_push($response, $row);
+// 		}
+// 		echo json_encode($response);
+// 		exit();
+// 	} else 
+// 	{
+// 		echo "This User is not valid to see his bookings"; 
+// 	} 
+// }
+
+
+// *****************************************Edit API**********************************************************
+add_action( 'rest_api_init', 'register_api_hooks_update' );
+
+function register_api_hooks_update() {
+	register_rest_route(
+		'custom-plugin', '/update/',
+		array(
+			'methods'  => 'PUT',
+			'callback' => 'record',
+		)
+	);
+}
+
+function record(){
+
+	// $nm=$_PUT['post_title'];
+	// $no=$_PUT['mo_no'];
+	// $ev=$_PUT['post_content'];
+	// $em=$_PUT['email'];
+	// $dt=$_PUT['eve_date'];
+	// $tm=$_PUT['eve_time'];
+	// $ad=$_PUT['address'];
+
+    $ID = $_GET['ID'];
+	var_dump($ID);
+
+	parse_str(file_get_contents('php://input'),$_PUT);
+	print_r($_PUT);
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -325,50 +423,63 @@ $log_id = $_GET['log_id'];
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    	die("Connection failed: " . $conn->connect_error);
     }
-         $sql = "SELECT ID, post_title, mo_no, email, post_content, eve_date, eve_time, address  FROM wp_posts WHERE log_id = $log_id";
-        $result = mysqli_query($conn, $sql);
 
-        if (mysqli_num_rows($result) > 0) {
-            while($row = mysqli_fetch_assoc($result)) {
-              $sql = "SELECT ID, post_title, mo_no, email, post_content, eve_date, eve_time, address  FROM wp_posts WHERE log_id = $log_id";
-                    echo 
-                    	 "ID: "   . $row["ID"]. "\n".
-                    	 "Name: "   . $row["post_title"]. "\n".
-                         "Mobile.No: "  . $row["mo_no"].  "\n". 
-                         "Email:"   . $row["email"]. "\n".
-                         "Events:"   . $row["post_content"]. "\n".
-                         "Date:"   . $row["eve_date"]. "\n".
-                         "Time:"   . $row["eve_time"]. "\n".
-                         "Address:". $row["address"]."\n" ;
+// $query=mysqli_query($conn, "UPDATE wp_posts SET
+//      	post_title='".$_PUT['post_title']."', email='".$_PUT['email']."',mo_no='".$_PUT['mo_no']."',post_content='".$_PUT['post_content']."',eve_date='".$_PUT['eve_date']."',eve_time='".$_PUT['eve_time']."',address='".$_PUT['address']."' 
+//      	WHERE id='$ID'");
+ $sql = $conn->query("UPDATE wp_posts SET
+      post_title='".$_PUT['post_title']."', email='".$_PUT['email']."',mo_no='".$_PUT['mo_no']."',post_content='".$_PUT['post_content']."',eve_date='".$_PUT['eve_date']."',eve_time='".$_PUT['eve_time']."',address='".$_PUT['address']."' WHERE id= $ID");
+    // $sql = "UPDATE wp_posts SET post_title='$nm', mo_no='$no', email='$em',eve_date='$dt',eve_time='$tm', address='$ad', post_content='$ev' WHERE id = 1";
 
-                        // print json_encode($row);
-                        // exit();
-            }
-        } else 
-        {
-            echo "This User is not valid to see his bookings"; 
-        } 
-  // $log_id = $_GET['log_id'];
-  //   // echo $log_id;
-  //  var_dump($log_id);
+    if ($conn->query($sql) === TRUE) {
+    	echo "Record updated successfully";
+    } else {
+    	echo "Error updating record: " . $conn->error;
+    }
 
-  // $conn = mysqli_connect('localhost','root','','events');
+    $conn->close();
+}
 
-  // $sql = "SELECT log_id, post_title, mo_no, post_content, email, eve_date, eve_time,address FROM wp_posts
-  //  WHERE log_id = $log_id";
 
-  // $result = mysqli_query($conn,$sql);
-  // if (mysqli_num_rows($result) > 0) {
+// *****************************************Delete API**********************************************************
+add_action( 'rest_api_init', 'register_api_hooks_delete' );
 
-  //   while($row = mysqli_fetch_assoc($result)) {
-  //   	  $sql = "SELECT log_id, post_title, mo_no, post_content, email, eve_date, eve_time,address FROM wp_posts
-  //  WHERE log_id = $log_id";
-  //   	print json_encode($row);
-  //   	exit();	
-  //   }
-  // }else{
-  // 	echo "not record found";
-  // }
+function register_api_hooks_delete() {
+	register_rest_route(
+		'custom-plugin', '/delete/',
+		array(
+			'methods'  => 'DELETE',
+			'callback' => 'deleterecord',
+		)
+	);
+}
+
+function deleterecord(){
+
+    $ID = $_GET['ID'];
+
+// echo $ID;
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "events";
+
+// Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+    if ($conn->connect_error) {
+    	die("Connection failed: " . $conn->connect_error);
+    }
+
+    $sql = "DELETE FROM wp_posts WHERE id ='$ID'";
+
+    if ($conn->query($sql) === TRUE) {
+    	echo "Delete successfully";
+    } else {
+    	echo "Error DELETE record: " . $conn->error;
+    }
+
+    $conn->close();
 }

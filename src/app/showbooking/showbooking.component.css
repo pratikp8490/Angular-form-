@@ -1,4 +1,4 @@
-button{
+.btn{
     margin-left: 40%;
     padding: 10px 100px;
     border-radius: 5px;
@@ -9,4 +9,7 @@ button{
 table{
     background-color: #66B4E5;
     color:#ffffff;
+}
+h1{
+    color:#66B4E5;
 }

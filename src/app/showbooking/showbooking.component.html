@@ -1,14 +1,10 @@
-<!-- <p>showbooking works!</p> -->
 <div class="tbl">
-<button type="submit" class="nav-link mt-5 mb-4 btn-warning text-white border-0" (click)="showbooking()">Show Booked Event</button>
-<div *ngFor="let item of booking">
-{{item}} 
-</div>
-<!-- <div class="container">
+<!-- <button type="submit" class="nav-link btn mt-5 mb-4 btn-warning text-white border-0" (click)="showbooking()">Show Booked Event</button> -->
+<div class="container">
 <table class="table">
     <thead>
        <tr>
-          <th>UserLog_id</th>
+          <th>ID</th>
           <th>Name</th>
           <th>MobileNO.</th>
           <th>Email</th>
@@ -16,11 +12,14 @@
           <th>Date</th>
           <th>Time</th>
           <th>Address</th>
+          <th>EDIT</th>
+          <th>DELETE</th>
+
        </tr>
     </thead>
     <tbody>
-       <tr *ngFor="let item of booking">
-          <td>{{ item.log_id }}</td>
+       <tr *ngFor="let item of booking; let i = index" >
+          <td>{{ item.id }}</td>
           <td>{{ item.post_title }}</td>
           <td>{{ item.mo_no }}</td>
           <td>{{ item.email }}</td>
@@ -28,9 +27,24 @@
           <td>{{ item.eve_date }}</td>
           <td>{{ item.eve_time }}</td>
           <td>{{ item.address }}</td>
-       </tr>
+         <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+         <td><button class="btn-danger px-5 py-2" (click) = "delete(item)">DELETE</button></td>
+
+         </tr>
+         <tr *ngFor="let item of MSG; let i = index">
+            <td>{{ item.id }}</td>  
+            <td>{{ item.post_title }}</td>
+            <td>{{ item.mo_no }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.post_content }}</td>
+            <td>{{ item.eve_date }}</td>
+            <td>{{ item.eve_time }}</td>
+            <td>{{ item.address }}</td>
+           <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+           <td><button class="btn-danger px-5 py-2" (click) = "delete(item)">DELETE</button></td>
+
+           </tr>
     </tbody>
  </table>
-</div> -->
 </div>
 <router-outlet></router-outlet>

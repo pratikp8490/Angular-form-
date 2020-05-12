@@ -171,9 +171,12 @@ require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
 
 
 // headers
-
+	header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+    header("Access-Control-Allow-Credentials: true");
 function add_cors_http_header(){
 	header("Access-Control-Allow-Origin: *");
+	
 }
 add_action('init﻿','add_cors_http_header');
 
@@ -208,11 +211,18 @@ function login($request){
 
   // echo $_SESSION['login'];
   // echo $_SESSION['password'];
+	if($_SESSION['login'] == "" || $_SESSION['password'] == ""){
+		
+		$required = "Unauthorized";
+		http_response_code(401);
+		echo $required;
+		exit;
+	}
 
 	$creds['remember'] = true;
-	$user = wp_signon( $creds, false );
+	$user = wp_signon( $creds );
 
-	if ( is_wp_error($user) )
+	  if ( is_wp_error($user) )
 		echo $user->get_error_message();
 	return $user;
 }
@@ -313,6 +323,26 @@ function lookevent() {
 }
 function events($request){
 
+
+$json = $request->get_headers();
+
+// echo " <h1>pratik</h1> ";
+// echo "<br>";
+
+$user_req_email = '';
+foreach ($json as $key => $feature) {
+	if($key == 'auth'){
+		$user_email = $feature[0];
+	}
+}
+
+if($user_email){
+	echo $user_email;
+	exit();
+}
+
+
+
 	$log_id = $_GET['log_id'];
     // echo $log_id;
 
@@ -343,50 +373,6 @@ function events($request){
 	} 
 }
 
-// ************************************Edit button click api ************************************************************
-
-// add_action( 'rest_api_init', 'lookdata');
-
-// function lookdata() {
-// 	register_rest_route(
-// 		'custom-plugin', '/display/',
-// 		array(
-// 			'methods'  => 'GET',
-// 			'callback' => 'displaydata',
-// 		)
-// 	);
-// }
-// function displaydata($request){
-
-// 	$id = $_GET['ID'];
-//     // echo $log_id;
-
-// 	$servername = "localhost";
-// 	$username = "root";
-// 	$password = "";
-// 	$dbname = "events";
-
-// 	$conn = new mysqli($servername, $username, $password, $dbname);
-// 	if ($conn->connect_error) {
-// 		die("Connection failed: " . $conn->connect_error);
-// 	}
-// 	$sql = "SELECT ID, post_title, mo_no, email, post_content, eve_date, eve_time, address  FROM wp_posts WHERE ID = $id";
-// 	$result = mysqli_query($conn, $sql);
-// 	$response =  [];
-
-// 	if (mysqli_num_rows($result) > 0) {
-// 		while($row = mysqli_fetch_assoc($result)) {
-
-// 			array_push($response, $row);
-// 		}
-// 		echo json_encode($response);
-// 		exit();
-// 	} else 
-// 	{
-// 		echo "This User is not valid to see his bookings"; 
-// 	} 
-// }
-
 
 // *****************************************Edit API**********************************************************
 add_action( 'rest_api_init', 'register_api_hooks_update' );
@@ -403,19 +389,9 @@ function register_api_hooks_update() {
 
 function record(){
 
-	// $nm=$_PUT['post_title'];
-	// $no=$_PUT['mo_no'];
-	// $ev=$_PUT['post_content'];
-	// $em=$_PUT['email'];
-	// $dt=$_PUT['eve_date'];
-	// $tm=$_PUT['eve_time'];
-	// $ad=$_PUT['address'];
-
     $ID = $_GET['ID'];
 	var_dump($ID);
 
-	parse_str(file_get_contents('php://input'),$_PUT);
-	print_r($_PUT);
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -426,16 +402,22 @@ function record(){
     	die("Connection failed: " . $conn->connect_error);
     }
 
-// $query=mysqli_query($conn, "UPDATE wp_posts SET
-//      	post_title='".$_PUT['post_title']."', email='".$_PUT['email']."',mo_no='".$_PUT['mo_no']."',post_content='".$_PUT['post_content']."',eve_date='".$_PUT['eve_date']."',eve_time='".$_PUT['eve_time']."',address='".$_PUT['address']."' 
-//      	WHERE id='$ID'");
- $sql = $conn->query("UPDATE wp_posts SET
-      post_title='".$_PUT['post_title']."', email='".$_PUT['email']."',mo_no='".$_PUT['mo_no']."',post_content='".$_PUT['post_content']."',eve_date='".$_PUT['eve_date']."',eve_time='".$_PUT['eve_time']."',address='".$_PUT['address']."' WHERE id= $ID");
-    // $sql = "UPDATE wp_posts SET post_title='$nm', mo_no='$no', email='$em',eve_date='$dt',eve_time='$tm', address='$ad', post_content='$ev' WHERE id = 1";
+    parse_str(file_get_contents('php://input'),$_PUT);
+
+	var_dump($_put);
+ 	 $json_array[] = $_PUT;
+      $json = json_encode($json_array);
+    echo $json;
+ 
+ $sql = mysqli_query($conn,"UPDATE wp_posts SET
+      post_title='".$_PUT['post_title']."', email='".$_PUT['email']."',mo_no='".$_PUT['mo_no']."',post_content='".$_PUT['post_content']."',eve_date='".$_PUT['eve_date']."',eve_time='".$_PUT['eve_time']."',address='".$_PUT['address']."' WHERE ID= $ID");
+
 
     if ($conn->query($sql) === TRUE) {
     	echo "Record updated successfully";
-    } else {
+    } 
+   
+    else {
     	echo "Error updating record: " . $conn->error;
     }
 
@@ -447,39 +429,97 @@ function record(){
 add_action( 'rest_api_init', 'register_api_hooks_delete' );
 
 function register_api_hooks_delete() {
+  register_rest_route(
+    'custom-plugin', '/delete/',
+    array(
+      'methods'  => 'DELETE',
+      'callback' => 'deletedata',
+    )
+  );
+}
+
+function deletedata(){
+  $ID = $_GET['ID'];
+
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "events";
+
+// Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+
+  $query=mysqli_query($conn, "DELETE FROM wp_posts WHERE ID = '$ID' ");
+
+  if($query==true){ 
+        echo "Records was delete successfully.";
+
+    } else{ 
+        echo "ERROR:Records is not delete . " . $mysqli->error;
+    } 
+}
+
+
+
+// ************************************signup api ************************************************************
+
+add_action( 'rest_api_init', 'signup');
+
+function signup() {
 	register_rest_route(
-		'custom-plugin', '/delete/',
+		'custom-plugin', '/signup/',
 		array(
-			'methods'  => 'DELETE',
-			'callback' => 'deleterecord',
+			'methods'  => 'POST',
+			'callback' => 'signupdata',
 		)
 	);
 }
+function signupdata($request){
 
-function deleterecord(){
+	$un = $_POST['user_login'];
+	$up = $_POST['user_pass'];
+	 $md = md5($up);
+	$ue = $_POST['user_email'];
+	 $nk = $_POST['user_nicename'];
+	$d= date("Y-m-d h:i:sa");
 
-    $ID = $_GET['ID'];
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "events";
 
-// echo $ID;
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "events";
+// Create connection// headers
+	header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
+    header("Access-Control-Allow-Credentials: true");
+function add_cors_http_header(){
+	header("Access-Control-Allow-Origin: *");
+	
+}
+add_action('init﻿','add_cors_http_header');
 
-// Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+add_filter('allowed_http_origins', 'add_allowed_origins');
+
+function add_allowed_origins($origins) {
+	$origins[] = 'https://www.yourdomain.com';
+	return $origins;
+}
 // Check connection
-    if ($conn->connect_error) {
-    	die("Connection failed: " . $conn->connect_error);
-    }
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+$qy = "INSERT into wp_users (user_login, user_pass, user_email, user_nicename, display_name, user_registered) 
+VALUES ('$un','$md','$ue', '$nk', '$nk','$d')";
 
-    $sql = "DELETE FROM wp_posts WHERE id ='$ID'";
+ if (mysqli_query($conn, $qy)) {
+  echo "New record created successfully";
+} else {
+  echo "Error: " . $qy . "<br>" . mysqli_error($conn);
+}
 
-    if ($conn->query($sql) === TRUE) {
-    	echo "Delete successfully";
-    } else {
-    	echo "Error DELETE record: " . $conn->error;
-    }
-
-    $conn->close();
 }

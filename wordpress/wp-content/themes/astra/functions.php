@@ -483,7 +483,8 @@ function signupdata($request){
 
 	$un = $_POST['user_login'];
 	$up = $_POST['user_pass'];
-	 $md = md5($up);
+	 // $md = md5($up);
+	$user_pass = wp_hash_password($up);
 	$ue = $_POST['user_email'];
 	 $nk = $_POST['user_nicename'];
 	$d= date("Y-m-d h:i:sa");
@@ -493,28 +494,15 @@ function signupdata($request){
   $password = "";
   $dbname = "events";
 
-// Create connection// headers
-	header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE");
-    header("Access-Control-Allow-Credentials: true");
-function add_cors_http_header(){
-	header("Access-Control-Allow-Origin: *");
-	
-}
-add_action('init﻿','add_cors_http_header');
-
-add_filter('allowed_http_origins', 'add_allowed_origins');
-
-function add_allowed_origins($origins) {
-	$origins[] = 'https://www.yourdomain.com';
-	return $origins;
-}
+// Create connection
+  $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
+
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
 $qy = "INSERT into wp_users (user_login, user_pass, user_email, user_nicename, display_name, user_registered) 
-VALUES ('$un','$md','$ue', '$nk', '$nk','$d')";
+VALUES ('$un','$user_pass','$ue', '$nk', '$nk','$d')";
 
  if (mysqli_query($conn, $qy)) {
   echo "New record created successfully";
@@ -522,4 +510,50 @@ VALUES ('$un','$md','$ue', '$nk', '$nk','$d')";
   echo "Error: " . $qy . "<br>" . mysqli_error($conn);
 }
 
+}
+
+// **************************************************FORGOT PASSWORD API ***************************************************
+
+add_action( 'rest_api_init', 'register_api_hooks_forgotpass' );
+
+function register_api_hooks_forgotpass() {
+    register_rest_route(
+        'custom-plugin', '/forgot/',
+        array(
+            'methods'  => 'PUT',
+            'callback' => 'pass',
+        )
+    );
+}
+function pass(){
+
+	$user_email = $_GET['user_email'];
+	// $user_pass = $_POST['user_pass'];
+	$up = $_POST['user_pass'];
+	 // $md = md5($up);
+	$user_pass = wp_hash_password($up);
+
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "events";
+
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+
+	parse_str( file_get_contents("php://input"), $_PUT );
+	// print_r($_PUT);
+
+	$sql=mysqli_query($conn, "UPDATE wp_users SET user_pass='$user_pass' WHERE  user_email = '$user_email'");
+
+	if($sql==true){ 
+		echo "Records was updated successfully.";
+
+	} else{ 
+		echo "ERROR: Could not able to execute $sql. " . $mysqli->error;
+	}
 }

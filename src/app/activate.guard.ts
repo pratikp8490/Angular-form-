@@ -7,11 +7,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class ActivateGuard implements CanActivate {
-  user:any;
-  constructor(private service:ApiService , private router:Router) {
-    // this.user = JSON.parse(localStorage.getItem('value'))
-    // console.log('this is user name',this.user)
-  }
+  constructor(private service:ApiService , private router:Router) {}
     canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
@@ -23,5 +19,4 @@ export class ActivateGuard implements CanActivate {
       this.router.navigate(['login']);
     }
   }
-  
 }

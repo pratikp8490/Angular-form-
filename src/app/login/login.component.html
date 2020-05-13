@@ -11,9 +11,13 @@
                 <h6 for="username">Password:</h6>
                 <input type="password" class="form-contral rounded-sm pl-1 border-0"
                  placeholder="Enter your Password" formControlName="password"  name="password" required>
-                <div class="btnn"><button type="submit" class="btn btn-warning text-white mt-4 px-5" (click)="loginUser(loginForm.value)">Login</button>   
+                <div class="btnn"><button type="submit" class="btn btn-warning w-75 text-white mt-4 px-5" (click)="loginUser(loginForm.value)">Login</button>   
                 </div>
             </div>
+            <div class="btnn"><button type="submit" class="btn btn-success w-75 text-white mt-4 mb-4 px-5" routerLink = "/newcustomeruser">Signup</button>   
+            </div>
+            <a routerLink="/forgot" >Forgot Password</a>
+
         </form>
   </div>
 </div>  

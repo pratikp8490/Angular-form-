@@ -19,10 +19,13 @@ jsonapifile : any
   }
 
   loginUser(value) {
-    this.http.get(`http://localhost/wordpress/wp-json/custom-plugin/login?username=${value.username}&password=${value.password}`)
+    this.service.loginUser(value)
         .subscribe(data => {
+          localStorage.setItem("value", JSON.stringify(value));
+          console.log('this is value of', value);
           this.jsonapifile = data
           localStorage.setItem('ID', JSON.stringify(this.jsonapifile.ID));
+          localStorage.setItem('user_email',this.jsonapifile.data.user_email);
           console.log("loginSuccess", this.jsonapifile)
           this.router.navigate(['home'], { state: value }) 
         },

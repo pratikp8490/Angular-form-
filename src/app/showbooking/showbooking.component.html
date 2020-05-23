@@ -1,50 +1,216 @@
 <div class="tbl">
-<!-- <button type="submit" class="nav-link btn mt-5 mb-4 btn-warning text-white border-0" (click)="showbooking()">Show Booked Event</button> -->
-<div class="container">
-<table class="table">
-    <thead>
-       <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>MobileNO.</th>
-          <th>Email</th>
-          <th>Events</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Address</th>
-          <th>EDIT</th>
-          <th>DELETE</th>
-
-       </tr>
-    </thead>
-    <tbody>
-       <tr *ngFor="let item of booking; let i = index" >
-          <td>{{ item.id }}</td>
-          <td>{{ item.post_title }}</td>
-          <td>{{ item.mo_no }}</td>
-          <td>{{ item.email }}</td>
-          <td>{{ item.post_content }}</td>
-          <td>{{ item.eve_date }}</td>
-          <td>{{ item.eve_time }}</td>
-          <td>{{ item.address }}</td>
-         <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
-         <td><button class="btn-danger px-5 py-2" (click) = "delete(item)">DELETE</button></td>
-
-         </tr>
-         <tr *ngFor="let item of MSG; let i = index">
-            <td>{{ item.id }}</td>  
-            <td>{{ item.post_title }}</td>
-            <td>{{ item.mo_no }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.post_content }}</td>
-            <td>{{ item.eve_date }}</td>
-            <td>{{ item.eve_time }}</td>
-            <td>{{ item.address }}</td>
-           <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
-           <td><button class="btn-danger px-5 py-2" (click) = "delete(item)">DELETE</button></td>
-
-           </tr>
-    </tbody>
- </table>
+   <mat-tab-group mat-align-tabs="center">
+      <mat-tab label="ALL Data">
+         <ng-template matTabContent>
+             <table class="table">
+                 <thead>
+                    <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                     <th>MobileNO.</th>
+                     <th>Email</th>
+                     <th>Events</th>
+                     <th>Date-Time</th>
+                     <!-- <th>Time</th> -->
+                     <!-- <th>Address</th> -->
+                     <th>Status</th>
+                       <th>EDIT</th>
+                       <th>DELETE</th>
+             
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <tr *ngFor="let item of booking; let i = index" >
+                     <td>{{ item.id }}</td>
+                     <td>{{ item.post_title }}</td>
+                     <td>{{ item.to_ping }}</td>
+                     <td>{{ item.post_content }}</td>
+                     <td>{{ item.post_excerpt }}</td>
+                     <td>{{ item.post_date }}</td>
+                      <td>{{item.post_status}}</td>
+                      <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                      <td><button class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>             
+                      </tr>
+                      <tr *ngFor="let item of MSG; let i = index">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.post_title }}</td>
+                        <td>{{ item.to_ping }}</td>
+                        <td>{{ item.post_content }}</td>
+                        <td>{{ item.post_excerpt }}</td>
+                        <td>{{ item.post_date }}</td>
+                        <!-- <td>{{ item.eve_time }}</td> -->
+                        <!-- <td>{{ item.address }}</td> -->
+                       <td>
+                         <td>{{item.post_status}}</td>
+                        <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                        <td><button class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+                        </tr>
+                 </tbody>
+              </table>
+         </ng-template>
+       </mat-tab>
+      <mat-tab label="Pending">
+        <ng-template matTabContent>
+            <table class="table">
+                <thead>
+                   <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>MobileNO.</th>
+                      <th>Email</th>
+                      <th>Events</th>
+                      <th>Date-Time</th>
+                      <!-- <th>Time</th> -->
+                      <!-- <th>Address</th> -->
+                      <th>Status</th>
+                      <th>EDIT</th>
+                      <th>DELETE</th>
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let item of pending; let i = index" >
+                      <td>{{ item.id }}</td>
+                      <td>{{ item.post_title }}</td>
+                      <td>{{ item.to_ping }}</td>
+                      <td>{{ item.post_content }}</td>
+                      <td>{{ item.post_excerpt }}</td>
+                      <td>{{ item.post_date }}</td>
+                      <!-- <td>{{ item.eve_time }}</td> -->
+                      <!-- <td>{{ item.address }}</td> -->
+                     <td>
+                        <span class="material-icons">access_time</span></td>
+                        <!-- {{item.post_status}}</td> -->
+                     <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                     <td><button class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+                     </tr>
+                     <tr *ngFor="let item of MSG; let i = index">
+                        <td>{{ item.id }}</td>
+                      <td>{{ item.post_title }}</td>
+                      <td>{{ item.to_ping }}</td>
+                      <td>{{ item.post_content }}</td>
+                      <td>{{ item.post_excerpt }}</td>
+                      <td>{{ item.post_date }}</td>
+                      <!-- <td>{{ item.eve_time }}</td> -->
+                      <!-- <td>{{ item.address }}</td> -->
+                     <td>
+                           <span class="material-icons">access_time</span></td>
+                           <!-- {{item.post_status}}</td> -->
+                       <td><button class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                       <td><button class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+                       </tr>
+                </tbody>
+             </table>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Confirm">
+        <ng-template matTabContent>
+            <table class="table">
+                <thead>
+                   <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                     <th>MobileNO.</th>
+                     <th>Email</th>
+                     <th>Events</th>
+                     <th>Date-Time</th>
+                     <!-- <th>Time</th> -->
+                     <!-- <th>Address</th> -->
+                     <th>Status</th>
+                      <th>EDIT</th>
+                      <th>DELETE</th>
+            
+                   </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let item of confirmed; let i = index" >
+                     <td>{{ item.id }}</td>
+                     <td>{{ item.post_title }}</td>
+                     <td>{{ item.to_ping }}</td>
+                     <td>{{ item.post_content }}</td>
+                     <td>{{ item.post_excerpt }}</td>
+                     <td>{{ item.post_date }}</td>
+                     <!-- <td>{{ item.eve_time }}</td> -->
+                     <!-- <td>{{ item.address }}</td> -->
+                    <td>
+                        <span class="material-icons">done_outline</span></td>
+                        <!-- {{item.post_status}}</td> -->
+                     <td><button [disabled] = "btnDisabled" class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                     <td><button [disabled] = "btnDisabled" class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+            
+                     </tr>
+                     <tr *ngFor="let item of MSG; let i = index">
+                        <td>{{ item.id }}</td>
+                      <td>{{ item.post_title }}</td>
+                      <td>{{ item.to_ping }}</td>
+                      <td>{{ item.post_content }}</td>
+                      <td>{{ item.post_excerpt }}</td>
+                      <td>{{ item.post_date }}</td>
+                      <!-- <td>{{ item.eve_time }}</td> -->
+                      <!-- <td>{{ item.address }}</td> -->
+                     <td>
+                           <span class="material-icons">done_outline</span>></td>
+                           <!-- {{item.post_status}}</td> -->
+                       <td><button [disabled] = "btnDisabled" class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                       <td><button [disabled] = "btnDisabled" class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+                       </tr>
+                </tbody>
+             </table>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Canceled">
+         <ng-template matTabContent>
+             <table class="table">
+                 <thead>
+                    <tr>
+                     <th>ID</th>
+                     <th>Name</th>
+                     <th>MobileNO.</th>
+                     <th>Email</th>
+                     <th>Events</th>
+                     <th>Date-Time</th>
+                     <!-- <th>Time</th> -->
+                     <!-- <th>Address</th> -->
+                     <th>Status</th>
+                       <th>EDIT</th>
+                       <th>DELETE</th>
+             
+                    </tr>
+                 </thead>
+                 <tbody>
+                    <tr *ngFor="let item of canceled; let i = index" >
+                     <td>{{ item.id }}</td>
+                     <td>{{ item.post_title }}</td>
+                     <td>{{ item.to_ping }}</td>
+                     <td>{{ item.post_content }}</td>
+                     <td>{{ item.post_excerpt }}</td>
+                     <td>{{ item.post_date }}</td>
+                     <!-- <td>{{ item.eve_time }}</td> -->
+                     <!-- <td>{{ item.address }}</td> -->
+                    <td>
+                        <span class="material-icons">clear</span>
+                         </td>
+                      <td><button [disabled] = "btnDisabled" class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                      <td><button [disabled] = "btnDisabled" class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>             
+                      </tr>
+                      <tr *ngFor="let item of MSG; let i = index">
+                        <td>{{ item.id }}</td>
+                      <td>{{ item.post_title }}</td>
+                      <td>{{ item.to_ping }}</td>
+                      <td>{{ item.post_content }}</td>
+                      <td>{{ item.post_excerpt }}</td>
+                      <td>{{ item.post_date }}</td>
+                      <!-- <td>{{ item.eve_time }}</td> -->
+                      <!-- <td>{{ item.address }}</td> -->
+                     <td>
+                           <span class="material-icons">clear</span>
+                            </td>
+                        <td><button [disabled] = "btnDisabled" class="btn-warning px-5 py-2" (click) = "update(item)">Edit</button></td>
+                        <td><button [disabled] = "btnDisabled" class="btn-danger px-5 py-2" (click) = "delete(item.id)">DELETE</button></td>
+                        </tr>
+                 </tbody>
+              </table>
+         </ng-template>
+       </mat-tab>
+    </mat-tab-group>
 </div>
 <router-outlet></router-outlet>

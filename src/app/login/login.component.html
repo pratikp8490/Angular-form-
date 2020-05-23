@@ -1,14 +1,14 @@
 <div class="row m-0 p-0">
     <div class="frm rounded-lg px-5 mx-auto">
-        <h2 class="margin l_class pt-5 text-white text-center">Login</h2>
+        <h1 class="margin l_class pt-5 text-white text-center">Login</h1>
         <form [formGroup]='loginForm'>
             <div class="form-group">
-                <h6 for="username">Username:</h6>
+                <h3 for="username">Username:</h3>
                 <input type="text" class="form-contral rounded-lg pl-1 border-0"
                  placeholder="Enter your Email" formControlName="username" name="username" required>
             </div>
             <div class="form-group">
-                <h6 for="username">Password:</h6>
+                <h3 for="username">Password:</h3>
                 <input type="password" class="form-contral rounded-sm pl-1 border-0"
                  placeholder="Enter your Password" formControlName="password"  name="password" required>
                 <div class="btnn"><button type="submit" class="btn btn-warning w-75 text-white mt-4 px-5" (click)="loginUser(loginForm.value)">Login</button>   
@@ -16,8 +16,7 @@
             </div>
             <div class="btnn"><button type="submit" class="btn btn-success w-75 text-white mt-4 mb-4 px-5" routerLink = "/newcustomeruser">Signup</button>   
             </div>
-            <a routerLink="/forgot" >Forgot Password</a>
-
+            <div><h3><a routerLink="/sendmail" class="text-dark" >Forgot Password?</a></h3></div>      
         </form>
   </div>
 </div>  

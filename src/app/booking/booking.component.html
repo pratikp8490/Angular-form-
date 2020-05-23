@@ -18,49 +18,38 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <input type="text" class="form-contral rounded-sm w-100 p-2 pl-1 border-0"
-                        [ngModel] = "obj.mo_no" placeholder="Phone No." formControlName="mo_no" name="phone_no"
-                            [ngClass]="{ 'is-invalid': submitted && f.mo_no.errors }">
-                        <div *ngIf="submitted && f.mo_no.errors" class="invalid-feedback">
-                            <div *ngIf="f.mo_no.errors.required">MobileNo is required</div>
-                            <div *ngIf="f.mo_no.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
+                        [ngModel] = "obj.to_ping" placeholder="Phone No." formControlName="to_ping" name="phone_no"
+                            [ngClass]="{ 'is-invalid': submitted && f.to_ping.errors }">
+                        <div *ngIf="submitted && f.to_ping.errors" class="invalid-feedback">
+                            <div *ngIf="f.to_ping.errors.required">MobileNo is required</div>
+                            <div *ngIf="f.to_ping.errors.pattern">Please, Enter 10 digit Mobile Number.</div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <input type="text" class="form-contral rounded-sm mt-2 w-100 pl-1 p-2 border-0"
-                        placeholder="Email Id" [ngModel] = "obj.email" formControlName="email" name="username"
-                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required">Email is required</div>
-                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        placeholder="Email Id" [ngModel] = "obj.post_content" formControlName="post_content" name="username"
+                        [ngClass]="{ 'is-invalid': submitted && f.post_content.errors }">
+                    <div *ngIf="submitted && f.post_content.errors" class="invalid-feedback">
+                        <div *ngIf="f.post_content.errors.required">Email is required</div>
+                        <div *ngIf="f.post_content.errors.email">Email must be a valid email address</div>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="date" class="form-contral rounded-sm w-100 p-2 mt-4 pl-1 border-0"
-                        [ngModel] = "obj.eve_date"  placeholder="date" formControlName="eve_date" name="date"
-                            [ngClass]="{ 'is-invalid': submitted && f.eve_date.errors }">
-                        <div *ngIf="submitted && f.eve_date.errors" class="invalid-feedback">
-                            <div *ngIf="f.eve_date.errors.required">Date is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="form-group">
-                        <input type="time" class="form-contral rounded-sm w-100 p-2 mt-4 pl-1 border-0"
-                            placeholder="Time" [ngModel] = "obj.eve_time" formControlName="eve_time" name="time"
-                            [ngClass]="{ 'is-invalid': submitted && f.eve_time.errors }">
-                        <div *ngIf="submitted && f.eve_time.errors" class="invalid-feedback">
-                            <div *ngIf="f.eve_time.errors.required">Time is required</div>
+                <div class="col-sm-12">
+                    <div class="form-group mt-3">
+                        <input type="datetime" class="form-control" placeholder="YY-MM-DD HH:MM:AM/PM" [ngModel]="obj.post_date"
+                            formControlName="post_date" [ngClass]="{ 'is-invalid': submitted && f.post_date.errors }" />
+                        <div *ngIf="submitted && f.post_date.errors" class="invalid-feedback">
+                            <div *ngIf="f.post_date.errors.required">First Date & Time is required</div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <select class="form-control mt-2" [ngModel] = "obj.post_content" formControlName="post_content"
-                            [ngClass]="{ 'is-invalid': submitted && f.post_content.errors }">
+                        <select class="form-control mt-2" [ngModel] = "obj.post_excerpt" formControlName="post_excerpt"
+                            [ngClass]="{ 'is-invalid': submitted && f.post_excerpt.errors }">
                             <option aria-placeholder="Event name">Select Event</option>
                             <option>Darshan Rawal (550 RS) For 1 Per.</option>
                             <option>Dhirubhai Sarwaiya (800 RS) For 1 Per.</option>
@@ -68,57 +57,30 @@
                             <option>Falguni Pathak (750 RS) For 1 Per.</option>
                             <option>Tony Kakkar (600 RS) For 1 Per.</option>
                         </select>
-                        <div *ngIf="submitted && f.post_content.errors" class="invalid-feedback">
-                            <div *ngIf="f.post_content.errors.required">event is required</div>
+                        <div *ngIf="submitted && f.post_excerpt.errors" class="invalid-feedback">
+                            <div *ngIf="f.post_excerpt.errors.required">event is required</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div>
-                    <textarea class="form-control border-sm mt-2 ml-3" rows="5" cols="86" placeholder="Enter Address"
-                        formControlName="address" [ngModel] = "obj.address"
-                        [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
-                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-                        <div *ngIf="f.address.errors.required">Address is required</div>
+                    <textarea class="form-control border-sm mt-2 ml-3" rows="5" cols="68" placeholder="Enter Address"
+                        formControlName="post_content_filtered" [ngModel] = "obj.post_content_filtered"
+                        [ngClass]="{ 'is-invalid': submitted && f.post_content_filtered.errors }"></textarea>
+                    <div *ngIf="submitted && f.post_content_filtered.errors" class="invalid-feedback">
+                        <div *ngIf="f.post_content_filtered.errors.required">Address is required</div>
                     </div>
                 </div>
             </div>
-            <div class="btnn"><button type="submit"  class="btn py-2 w-50 mt-4 text-white mb-3 btn-warning  px-5"
+            <div class="btnn"><button type="submit" [hidden] = "isShow"  class="btn py-2 w-50 mt-4 text-white mb-3 btn-warning  px-5"
                     (click)="eventbook(eventbooking.value)">Book Event</button>
                     <!-- [disabled]="!myForm.form.valid" -->
-                    <button type="submit"  class="btn py-2 w-50 mt-4 text-white mb-3 btn-warning  px-5"
+                    <button type="submit" *ngIf="isButtonVisible" (click)="isButtonVisible = true"  class="btn py-2 w-50 mt-4 text-white mb-3 btn-warning  px-5"
                     (click)="updatedatanew(eventbooking.value)">Update Event</button>
                 </div>
         </form>
     </div>
 </div>
-<!-- <table class="table">
-    <thead>
-       <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>MobileNO.</th>
-          <th>Email</th>
-          <th>Events</th>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Address</th>
-       </tr>
-    </thead>
-    <tbody>
-       <tr *ngFor="let item of data">
-          <td>{{ item.id | json }}</td>
-          <td>{{ item.post_title | json  }}</td>
-          <td>{{ item.mo_no | json }}</td>
-          <td>{{ item.email | json }}</td>
-          <td>{{ item.post_content | json }}</td>
-          <td>{{ item.eve_date | json }}</td>
-          <td>{{ item.eve_time | json }}</td>
-          <td>{{ item.address | json }}</td>
-          <td><button>Edit</button></td>
-       </tr>
-    </tbody>
- </table> -->
 <app-showbooking [MSG]="data"></app-showbooking>
 <router-outlet></router-outlet>
